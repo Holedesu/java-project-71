@@ -1,7 +1,26 @@
 package hexlet.code;
 
-public class App {
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
+
+import java.util.concurrent.Callable;
+
+class App {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        new CommandLine(new Gendiff()).execute(args);
+    }
+}
+
+@Command(name = "gendiff", description = "Compares two configuration files and shows a difference.")
+class Gendiff implements Callable<Integer> {
+    @Option(names = {"-h", "--help"}, description = "Show this help message and exit.")
+    private String help;
+    @Option(names = {"-V", "--version"}, description = "Print version information and exit.")
+    private String version;
+    @Override
+    public Integer call() {
+        return 0;
     }
 }
