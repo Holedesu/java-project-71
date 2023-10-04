@@ -5,6 +5,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
+import java.io.IOException;
 import java.util.concurrent.Callable;
 
 class App {
@@ -28,6 +29,11 @@ class Gendiff implements Callable<Integer> {
 
     @Override
     public Integer call() {
+        try {
+            Differ.generate(filePath1, filePath2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 }
