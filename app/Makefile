@@ -1,3 +1,4 @@
+.DEFAULT_GOAL := build-run
 run-dist:
 	./build/install/app/bin/app
 install-dist:
@@ -6,3 +7,9 @@ clean:
 	./gradlew clean
 lint:
 	./gradlew checkstyleMain
+test:
+	./gradlew checkstyleTest
+build-run:
+	./gradlew build run
+
+.PHONY: build

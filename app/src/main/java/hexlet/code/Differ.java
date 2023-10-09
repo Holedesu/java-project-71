@@ -1,32 +1,36 @@
 package hexlet.code;
 
 import java.io.IOException;
-import java.nio.file.*;
-import java.util.*;
+import java.nio.file.Files;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.HashMap;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
-
 public class Differ {
-    public static void generate(String filePath1, String filePath2) throws IOException {
+    public static String generate(String filePath1, String filePath2) throws IOException {
         // Build a route to file
-        String directory = "src/test/resources/fixtures";
-        String filename1 = filePath1.substring(filePath1.lastIndexOf("/") + 1);
-        String filename2 = filePath2.substring(filePath2.lastIndexOf("/") + 1);
-//        Path path1 = Paths.get(filePath1).toAbsolutePath().normalize();
-//        Path path2 = Paths.get(filePath2).toAbsolutePath().normalize();
-        Path path1 = Paths.get(directory + "/" + filename1);
-        Path path2 = Paths.get(directory + "/" + filename2);
+        String baseRoute = "src/test/resources/fixtures/";
+//        Path fullPath1 = Paths.get(filePath1).toAbsolutePath().normalize();
+//        Path fullPath2 = Paths.get(filePath2).toAbsolutePath().normalize();
+        Path path1 = Paths.get(baseRoute + filePath1).toAbsolutePath();
+        Path path2 = Paths.get(baseRoute + filePath2).toAbsolutePath();
         // Parsing part start
         String jsonString1 = new String(Files.readAllBytes(path1));
         String jsonString2 = new String(Files.readAllBytes(path2));
+//        String jsonString1 = Files.readString(fullPath1);
+//        String jsonString2 = Files.readString(fullPath2);
 
         jsonString1 = jsonString1.replaceAll(",", "");
+        jsonString1 = jsonString1.replaceAll("\"", "");
         jsonString1 = jsonString1.substring(1, jsonString1.length() - 1);
         jsonString1 = jsonString1.trim();
 
         jsonString2 = jsonString2.replaceAll(",", "");
+        jsonString2 = jsonString2.replaceAll("\"", "");
         jsonString2 = jsonString2.substring(1, jsonString2.length() - 1);
         jsonString2 = jsonString2.trim();
 
@@ -45,7 +49,7 @@ public class Differ {
             map1.put(lineSplit1[0], lineSplit1[1]);
         }
         // Second file
-        for(String line2 : lines2) {
+        for (String line2 : lines2) {
             line2 = line2.trim();
             String[] lineSplit2 = line2.split(": ");
             map2.put(lineSplit2[0], lineSplit2[1]);
@@ -76,13 +80,12 @@ public class Differ {
         }
         result.append("}");
         System.out.println(result);
+        return result.toString();
     }
-
-
 
     public static void main(String[] args) {
         try {
-            generate("src/test/resources/fixtures/file1.json", "src/test/resources/fixtures/file2.json");
+            generate("filepath1.json", "filepath2.json");
         }    catch (IOException e) {
             e.printStackTrace();
         }
