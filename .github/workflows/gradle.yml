@@ -30,8 +30,10 @@ jobs:
         java-version: '20'
         distribution: 'temurin'
 
-    - name: Change working directory
-      run: cd /home/runner/work/java-project-71
+    - name: Initialize Gradle
+      uses: gradle init
+      with:
+        directory: java-project-71
 
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2.9.0
