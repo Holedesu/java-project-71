@@ -11,5 +11,9 @@ test:
 	./gradlew checkstyleTest
 build-run:
 	./gradlew build run
+build:
+	./gradlew build
+report:
+	./gradlew jacocoTestReport
 
 .PHONY: build
