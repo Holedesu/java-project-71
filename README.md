@@ -5,3 +5,5 @@
 ### Asciinema:
 #### Comparing two json files
 https://asciinema.org/a/wTTMSzohseJEdHicnAFyNXUrY
+#### Comparing two yaml files
+https://asciinema.org/a/2UTHVOMzDPkJlHeHx8YlFdgNI

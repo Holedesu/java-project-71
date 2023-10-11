@@ -8,7 +8,7 @@ import picocli.CommandLine.Parameters;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
-class App {
+public class App {
     public static void main(String[] args) {
         new CommandLine(new Gendiff()).execute(args);
     }
@@ -30,9 +30,11 @@ class Gendiff implements Callable<Integer> {
     @Override
     public Integer call() {
         try {
-            Differ.generate(filePath1, filePath2);
+            Differ.generate(filePath1, filePath2, "json");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
         return 0;
     }
