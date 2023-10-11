@@ -30,9 +30,7 @@ jobs:
         distribution: 'temurin'
     - name: Execute Gradle build
       run: ./gradlew build
-      with:
-        gradle-version: '8.3'
-        arguments: build
+
 
     - name: Publish code coverage
       uses: paambaati/codeclimate-action@v5.0.0
