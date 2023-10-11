@@ -10,7 +10,7 @@ test:
 	./gradlew checkstyleTest
 build-run:
 	./gradlew build run
-report:
+jacocoTestReport:
 	./gradlew jacocoTestReport
 
 .PHONY: build
