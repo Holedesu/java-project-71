@@ -1,8 +1,8 @@
 package hexlet.code;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Map;
-import java.util.TreeMap;
+//import java.util.TreeMap;
 
 public class Stylish {
     public static String format(Map<String, Object> finalMap, Map<String, Object> map1, Map<String, Object> map2) {
