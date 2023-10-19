@@ -20,7 +20,7 @@ class Gendiff implements Callable<Integer> {
     private String filePath1;
     @Parameters(index = "1", description = "path to second file")
     private String filePath2;
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
     private String format;
     @Option(names = {"-h", "--help"}, description = "Show this help message and exit.")
     private String help;

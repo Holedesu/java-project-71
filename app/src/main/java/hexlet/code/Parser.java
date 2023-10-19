@@ -14,7 +14,6 @@ public class Parser {
         switch (extension) {
             case "json":
                 return jsonMapper.readValue(content, Map.class);
-            case "yml":
             case "yaml":
                 return yamlMapper.readValue(content, Map.class);
             default:
