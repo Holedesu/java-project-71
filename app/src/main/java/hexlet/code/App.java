@@ -28,13 +28,12 @@ class Gendiff implements Callable<Integer> {
     private String version;
 
     @Override
-    public Integer call() {
+    public Integer call() throws Exception {
         try {
-            Differ.generate(filePath1, filePath2, "json");
+            System.out.println(Differ.generate(filePath1, filePath2, format));
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            return 1;
         }
         return 0;
     }
