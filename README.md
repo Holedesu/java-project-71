@@ -9,3 +9,5 @@ https://asciinema.org/a/wTTMSzohseJEdHicnAFyNXUrY
 https://asciinema.org/a/2UTHVOMzDPkJlHeHx8YlFdgNI
 #### Comparing first level comparing 
 https://asciinema.org/a/RItARwV3ws0VaUoz3wGirq5QL
+#### Comparing files by plain format
+https://asciinema.org/a/zpgSYtsY88p3EtjwN0zXUCzSv

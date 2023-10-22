@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.formatter;
 
 //import java.io.IOException;
 import java.util.Map;

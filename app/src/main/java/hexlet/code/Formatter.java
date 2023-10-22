@@ -1,5 +1,8 @@
 package hexlet.code;
 
+import hexlet.code.formatter.Plain;
+import hexlet.code.formatter.Stylish;
+
 import java.util.Map;
 
 public class Formatter {
@@ -9,6 +12,8 @@ public class Formatter {
         switch (formatter) {
             case "stylish":
                 return Stylish.format(finalMap, map1, map2);
+            case "plain":
+                return Plain.format(finalMap, map1, map2);
             default:
                 throw new RuntimeException("No formatter for extension: " + formatter);
         }
