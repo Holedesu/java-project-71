@@ -26,7 +26,7 @@ public class Stylish {
             } else if (map1.containsKey(key) && map2.containsKey(key)) {
                 if (value.equals(map1.get(key)) == value.equals(map2.get(key))) {
                     result.append("    " + key + ": " + value + "\n");
-                }else if (value.equals(map1.get(key)) != value.equals(map2.get(key))) {
+                } else if (value.equals(map1.get(key)) != value.equals(map2.get(key))) {
                     result.append("  - " + key + ": " + map1.get(key) + "\n");
                     result.append("  + " + key + ": " + map2.get(key) + "\n");
                 }
