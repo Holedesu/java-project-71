@@ -8,14 +8,8 @@ import picocli.CommandLine.Parameters;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
-public class App {
-    public static void main(String[] args) {
-        new CommandLine(new Gendiff()).execute(args);
-    }
-}
-
 @Command(name = "gendiff", description = "Compares two configuration files and shows a difference.")
-class Gendiff implements Callable<Integer> {
+public class App implements Callable<Integer> {
     @Parameters(index = "0", description = "path to first file")
     private String filePath1;
     @Parameters(index = "1", description = "path to second file")
@@ -36,5 +30,10 @@ class Gendiff implements Callable<Integer> {
             return 1;
         }
         return 0;
+    }
+
+    public static void main(String[] args) {
+        int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
     }
 }

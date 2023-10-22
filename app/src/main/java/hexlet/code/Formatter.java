@@ -7,8 +7,6 @@ public class Formatter {
                                          Map<String, Object> map2, String formatter) {
         formatter = formatter.toLowerCase();
         switch (formatter) {
-            case "plain":
-                return Plain.format(finalMap, map1, map2);
             case "stylish":
                 return Stylish.format(finalMap, map1, map2);
             default:

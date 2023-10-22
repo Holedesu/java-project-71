@@ -59,7 +59,7 @@ public class DifferTest {
     }
 
     void generateTestYaml() throws Exception {
-        assertThat(diff.generate("filepath1.json", "filepath2.json", "STYLISH")).isEqualTo(result);
+        assertThat(diff.generate("filepath1.yaml", "filepath2.yaml", "STYLISH")).isEqualTo(result);
     }
 
     @Test
@@ -80,14 +80,14 @@ public class DifferTest {
         Assertions.assertEquals(result, actual);
     }
 
-//    @Test
-//    public void testPlain() throws Exception {
-//        String filePath1 = "file1.json";
-//        String filePath2 = "file2.json";
-//        String format = "plain";
-//
-//        String actual = Differ.generate(filePath1, filePath2, format);
-//
-//        Assertions.assertEquals(plainResult, actual);
-//    }
+    @Test
+    public void testPlain() throws Exception {
+        String filePath1 = "file1.json";
+        String filePath2 = "file2.json";
+        String format = "plain";
+
+        String actual = Differ.generate(filePath1, filePath2, format);
+
+        Assertions.assertEquals(plainResult, actual);
+    }
 }

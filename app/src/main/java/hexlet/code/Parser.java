@@ -11,13 +11,10 @@ public class Parser {
         ObjectMapper jsonMapper = new ObjectMapper();
         ObjectMapper yamlMapper = new ObjectMapper(new YAMLFactory());
 
-        switch (extension) {
-            case "json":
-                return jsonMapper.readValue(content, Map.class);
-            case "yaml":
-                return yamlMapper.readValue(content, Map.class);
-            default:
-                throw new RuntimeException("No parser for extension: " + extension);
-        }
+        return switch (extension) {
+            case "json" -> jsonMapper.readValue(content, Map.class);
+            case "yaml" -> yamlMapper.readValue(content, Map.class);
+            default -> throw new RuntimeException("No parser for extension: " + extension);
+        };
     }
 }
