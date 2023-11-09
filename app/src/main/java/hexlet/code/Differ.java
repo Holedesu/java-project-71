@@ -12,9 +12,9 @@ import static hexlet.code.Differance.makeDifference;
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
         // Build a route to file
-        String baseRoute = "src/test/resources/fixtures/";
-        Path path1 = Paths.get(baseRoute + filePath1).toAbsolutePath();
-        Path path2 = Paths.get(baseRoute + filePath2).toAbsolutePath();
+        Path path1 = Paths.get(filePath1).toAbsolutePath().normalize();
+        Path path2 = Paths.get(filePath2).toAbsolutePath().normalize();
+
         // Parsing part start
         String jsonString1 = Files.readString(path1);
         String jsonString2 = Files.readString(path2);
