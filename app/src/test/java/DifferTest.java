@@ -1,7 +1,6 @@
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
@@ -86,8 +85,8 @@ public class DifferTest {
 
     @Test
     public void testPlain2() throws Exception {
-        String filePath1 = "file1.json";
-        String filePath2 = "file2.json";
+        String filePath1 = "file1.yml";
+        String filePath2 = "file2.yml";
         String format = "plain";
 
         String actual = Differ.generate(filePath1, filePath2, format);
