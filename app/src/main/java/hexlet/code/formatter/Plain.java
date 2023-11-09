@@ -1,38 +1,38 @@
 package hexlet.code.formatter;
 
+import hexlet.code.KeyStatus;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class Plain {
-    public static String format(Map<String, Object> finalMap, Map<String, Object> map1, Map<String, Object> map2) {
-        StringBuilder result = new StringBuilder();
-        for (Map.Entry<String, Object> entry : finalMap.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            Object complexValue = prepareValues(value);
-            Object complexmap1 = prepareValues(map1.get(key));
-            Object complexmap2 = prepareValues(map2.get(key));
+    public static String format(Map<String, KeyStatus> differ) throws IOException {
+        StringBuilder str = new StringBuilder();
+        for (Map.Entry<String, KeyStatus> element : differ.entrySet()) {
+            String status = element.getValue().getStatus();
+            String key = element.getKey();
+            var value1 = element.getValue().getValue1();
+            var value2 = element.getValue().getValue2();
 
-            if (value == null) {
-                if (map1.get(key) != null && map2.get(key) == null) {
-                    result.append("Property '" + key
-                            + "' was updated. From " + complexmap1 + " to " + complexValue + "\n");
-                } else if (map1.get(key) == null && map2.get(key) != null) {
-                    result.append("Property '" + key + "' was added with value: " + complexValue + "\n");
-                }
-            } else if (map1.containsKey(key) && map2.containsKey(key)) {
-                if (value.equals(map1.get(key)) != value.equals(map2.get(key))) {
-                    result.append("Property '" + key + "' was updated. From "
-                            +  complexmap1 + " to " +  complexmap2 + "\n");
-                }
+            var valueResult1 = prepareValues(value1);
+            var valueResult2 = prepareValues(value2);
 
-            } else if (!map1.containsKey(key) && map2.containsKey(key)) {
-                result.append("Property '" + key + "' was added with value: " + complexValue + "\n");
-            } else if (map1.containsKey(key) && !map2.containsKey(key)) {
-                result.append("Property '" + key + "' was removed" + "\n");
+            switch (status) {
+                case "deleted" -> str.append("Property " + "'").append(key).append("'").append(" was removed")
+                        .append("\n");
+                case "added" -> str.append("Property " + "'").append(key).append("'").append(" was added with value: ")
+                        .append(valueResult2).append("\n");
+                case "changed" -> str.append("Property " + "'").append(key).append("'").append(" was updated. ")
+                        .append("From ").append(valueResult1).append(" to ").append(valueResult2).append("\n");
+                case "unchanged" -> {
+                }
+                default -> {
+                    return "Something went wrong for input: " + element.getValue();
+                }
             }
         }
-        return result.toString().trim();
+        return str.toString().trim();
     }
     private static String prepareValues(Object value) {
 

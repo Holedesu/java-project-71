@@ -7,6 +7,8 @@ import java.util.TreeMap;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static hexlet.code.Differance.makeDifference;
+
 
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
@@ -21,12 +23,10 @@ public class Differ {
         Map<String, Object> map1 = Parser.parse(getExtension(filePath1), jsonString1);
         Map<String, Object> map2 = Parser.parse(getExtension(filePath2), jsonString2);
 
-        Map<String, Object> finalMap = new TreeMap<>();
-        finalMap.putAll(map1);
-        finalMap.putAll(map2);
+        Map<String, KeyStatus> finalMap = makeDifference(map1, map2);
 
 
-        return Formatter.chooseFormatter(finalMap, map1, map2, format);
+        return Formatter.chooseFormatter(finalMap, format);
     }
 
     public static String getExtension(String file1) {

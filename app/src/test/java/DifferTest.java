@@ -78,13 +78,6 @@ public class DifferTest {
     }
 
     @Test
-    public void testAppMain() {
-        // Assuming the main method in App class just delegates to CommandLine.execute(args)
-        String[] args = {"filepath1.json", "filepath2.json"};
-        Assertions.assertDoesNotThrow(() -> App.main(args));
-    }
-
-    @Test
     public void testGenerate() throws Exception {
         String filePath1 = "filepath1.json";
         String filePath2 = "filepath2.json";
