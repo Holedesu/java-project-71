@@ -10,13 +10,12 @@ import java.nio.file.Paths;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class DifferTest {
+public final class DifferTest {
 
     private static String resultStylish;
     private static String resultPlain;
-    private static String resultJson;
-    private String result;
-    private Differ diff;
+    private static String result;
+    private static Differ diff;
 
     private static Path getFixturePath(String fileName) {
         return Paths.get("src", "test", "resources", "fixtures", fileName)
@@ -32,10 +31,8 @@ public class DifferTest {
     public static void beforeAll() throws Exception {
         resultStylish = getFixtureContent("result_stylish.txt");
         resultPlain = getFixtureContent("result_plain.txt");
-        resultJson = getFixtureContent("result_json.json");
-    }
-    @BeforeAll
-    void setUp() {
+
+
         result =
                 "{\n"
                         + "  - follow: false\n"
@@ -45,27 +42,31 @@ public class DifferTest {
                         + "  + timeout: 20\n"
                         + "  + verbose: true\n"
                         + "}";
-        diff = new Differ();
 
+        diff = new Differ();
     }
 
 
     @Test
     void generateTestJson() throws Exception {
-        assertThat(diff.generate("filepath1.json", "filepath2.json", "Stylish")).isEqualTo(result);
+        String filePath1 = getFixturePath("filepath1.json").toString();
+        String filePath2 = getFixturePath("filepath2.json").toString();
+
+        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(result);
     }
     @Test
     void generateTestYaml() throws Exception {
-        assertThat(diff.generate("filepath1.yaml", "filepath2.yaml", "STYLISH")).isEqualTo(result);
+        String filePath1 = getFixturePath("filepath1.yaml").toString();
+        String filePath2 = getFixturePath("filepath2.yaml").toString();
+
+        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(result);
     }
 
     @Test
     public void testGenerate() throws Exception {
-        String filePath1 = "filepath1.json";
-        String filePath2 = "filepath2.json";
+        String filePath1 = getFixturePath("filepath1.yaml").toString();
+        String filePath2 = getFixturePath("filepath2.yaml").toString();
         String format = "stylish";
-        assertThat(Differ.generate(filePath1, filePath2))
-                .isEqualTo(result);
 
         String actual = Differ.generate(filePath1, filePath2, format);
 
@@ -73,9 +74,9 @@ public class DifferTest {
     }
 
     @Test
-    public void testPlain() throws Exception {
-        String filePath1 = "file1.json";
-        String filePath2 = "file2.json";
+    public void testStylish() throws Exception {
+        String filePath1 = getFixturePath("file1.json").toString();
+        String filePath2 = getFixturePath("file2.json").toString();
         String format = "stylish";
 
         String actual = Differ.generate(filePath1, filePath2, format);
@@ -84,9 +85,9 @@ public class DifferTest {
     }
 
     @Test
-    public void testPlain2() throws Exception {
-        String filePath1 = "file1.yml";
-        String filePath2 = "file2.yml";
+    public void testPlain() throws Exception {
+        String filePath1 = getFixturePath("file1.yaml").toString();
+        String filePath2 = getFixturePath("file2.yaml").toString();
         String format = "plain";
 
         String actual = Differ.generate(filePath1, filePath2, format);
