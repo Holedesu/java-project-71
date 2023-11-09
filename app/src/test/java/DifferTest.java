@@ -1,4 +1,3 @@
-import hexlet.code.App;
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
