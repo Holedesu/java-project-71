@@ -1,6 +1,11 @@
 package hexlet.code;
 
-import java.util.*;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.TreeSet;
+import java.util.Set;
 
 public class Differance {
     public static Map<String, KeyStatus> makeDifference(Map<String, Object> firstMap, Map<String, Object> secondMap) {

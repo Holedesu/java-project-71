@@ -2,7 +2,6 @@ package hexlet.code;
 
 import java.nio.file.Files;
 import java.util.Map;
-import java.util.TreeMap;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
