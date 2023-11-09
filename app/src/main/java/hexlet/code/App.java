@@ -16,7 +16,7 @@ public class App implements Callable<Integer> {
     @Parameters(index = "1", description = "path to second file")
     private String filePath2;
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
-    private String format;
+    private String format = "stylish";
     @Option(names = {"-h", "--help"}, description = "Show this help message and exit.")
     private String help;
     @Option(names = {"-V", "--version"}, description = "Print version information and exit.")

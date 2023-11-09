@@ -35,4 +35,9 @@ public class Differ {
         String extension = fileParts[fileParts.length - 1];
         return extension;
     }
+
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        String format = "stylish";
+        return generate(filePath1, filePath2, format);
+    }
 }

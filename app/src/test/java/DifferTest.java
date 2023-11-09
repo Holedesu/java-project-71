@@ -81,6 +81,8 @@ public class DifferTest {
         String filePath1 = "filepath1.json";
         String filePath2 = "filepath2.json";
         String format = "stylish";
+        assertThat(Differ.generate(filePath1, filePath2))
+                .isEqualTo(result);
 
         String actual = Differ.generate(filePath1, filePath2, format);
 
